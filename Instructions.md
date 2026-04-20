@@ -150,11 +150,11 @@ make
 * [x] `play.cpp` include TODOs like `// TODO: Explain?`.
 * [x] `HandleInputForget()` implemented with correct logic and inline explanations.
 * [x] `HandleInputRandom()` implemented with correct logic and inline explanations.
-* [ ] The dummy calls to `HandleInputNormal()` are removed.
-* [ ] `RemoveOldestSymbol()` implemented with correct logic and inline explanations.
-* [ ] The game runs correctly in all modes.
-* [ ] Program Flow Requirement Completed
-* [ ] Self Reflections Questions Completed
+* [x] The dummy calls to `HandleInputNormal()` are removed.
+* [x] `RemoveOldestSymbol()` implemented with correct logic and inline explanations.
+* [x] The game runs correctly in all modes.
+* [x] Program Flow Requirement Completed
+* [x] Self Reflections Questions Completed
 
 ---
 
