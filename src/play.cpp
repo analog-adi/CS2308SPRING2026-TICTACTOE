@@ -45,6 +45,12 @@ void Play::RemoveOldestSymbol(bool isX) {
     // - Remove it from the board and from the queue.
     //
     // 👉 Try to write this logic on your own based on how other parts of the code use these queues.
+    std::deque<std::pair<int, int>>& positions = isX ? xPositions : oPositions;
+    std::pair<int, int> oldestPos = positions.front();
+    int oldRow = oldestPos.first;
+    int oldCol = oldestPos.second;
+    board[oldRow][oldCol] = 0;
+    positions.pop_front();
 }
 
 // TODO: Explain--> Route input to special commands (reset, mode toggle) or active game mode handler
@@ -102,7 +108,20 @@ void Play::HandleInputForget() {
     // 5. Switch the turn to the other player.
     // 👉 For now, we call the NORMAL mode handler as a placeholder.
     // ❌ Remove the line below once you've implemented the logic above.
-    HandleInputNormal(); // TODO: Remove this line once FORGET logic is implemented
+    if (!gameOver && IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+        Vector2 mousePos = GetMousePosition();
+        int row = (mousePos.y - 50) / 100;
+        int col = (mousePos.x - 50) / 100;
+        if (row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE && board[row][col] == 0) {
+            std::deque<std::pair<int, int>>& positions = playerXTurn ? xPositions : oPositions;
+            if (positions.size() >= MAX_SYMBOLS) {
+                RemoveOldestSymbol(playerXTurn);
+            }
+            board[row][col] = playerXTurn ? 1 : 2;
+            positions.push_back(std::make_pair(row, col));
+            playerXTurn = !playerXTurn;
+        }
+    }
 }
 
 
@@ -118,7 +137,25 @@ void Play::HandleInputRandom() {
     // 5. Switch to the other player.
     // 👉 For now, we call the NORMAL mode handler as a placeholder.
     // ❌ Remove the line below once you've implemented the logic above.
-    HandleInputNormal(); // TODO: Remove this line once RANDOM logic is implemented
+    if (!gameOver && IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+        Vector2 mousePos = GetMousePosition();
+        int row = (mousePos.y - 50) / 100;
+        int col = (mousePos.x - 50) / 100;
+        if (row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE && board[row][col] == 0) {
+            std::deque<std::pair<int, int>>& positions = playerXTurn ? xPositions : oPositions;
+            board[row][col] = playerXTurn ? 1 : 2;
+            positions.push_back(std::make_pair(row, col));
+            if (positions.size() > MAX_SYMBOLS) {
+                int randomIndex = rand() % positions.size();
+                std::pair<int, int> randomPos = positions[randomIndex];
+                int oldRow = randomPos.first;
+                int oldCol = randomPos.second;
+                board[oldRow][oldCol] = 0;
+                positions.erase(positions.begin() + randomIndex);
+            }
+            playerXTurn = !playerXTurn;
+        }
+    }
 }
 
 

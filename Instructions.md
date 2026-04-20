@@ -147,9 +147,9 @@ make
 ## 🎓 Submission Checklist
 
 * [x] `play.h`updated with all docstrings and edge case notes.
-* [ ] `play.cpp` include TODOs like `// TODO: Explain?`.
-* [ ] `HandleInputForget()` implemented with correct logic and inline explanations.
-* [ ] `HandleInputRandom()` implemented with correct logic and inline explanations.
+* [x] `play.cpp` include TODOs like `// TODO: Explain?`.
+* [x] `HandleInputForget()` implemented with correct logic and inline explanations.
+* [x] `HandleInputRandom()` implemented with correct logic and inline explanations.
 * [ ] The dummy calls to `HandleInputNormal()` are removed.
 * [ ] `RemoveOldestSymbol()` implemented with correct logic and inline explanations.
 * [ ] The game runs correctly in all modes.
