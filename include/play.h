@@ -6,7 +6,25 @@
 #include <utility>
 
 /**
- * TODO: Provide docstring and any edge cases if exists.
+ * @class Play
+ * @brief Manages all game logic for TicTacToe with three gameplay modes.
+ *
+ * This class is made to do:
+ * -Record game board state.
+ * -Maintain player turn memory
+ * - Detect Win or Draw condition across rows, columns, and diagonals.
+ * -Maintain three game modes: NORMAL (unlimited symbols), FORGET (oldest removed), RANDOM (random symbol removed when limit exceeded).
+ * -Process input and convert pixel coordinates to board indices.
+ * -Track positions in deques for FORGET and RANDOM modes.
+ *
+ * Edge Cases:
+ * - What might happen if the playerInput is outside the game boundry
+ * -Are the X and O symbols properly tracked in the deques for FORGET and RANDOM modes?
+ * -What happens if the mode is toggled in the middle of a game?
+ * -Does the CheckWinner function correctly identify wins and draws in all scenarios?
+ * -Does the RemoveOldestSymbol function correctly handle the case when the deque is empty?
+ * -Does the HandleInput functions correctly enforce the rules for each mode, especially when placing symbols and switching turns?
+ * -Does the ResetGame function properly clear the board and reset all state variables to their initial values?
  */
 class Play {
 private:
