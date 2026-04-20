@@ -146,7 +146,7 @@ make
 
 ## 🎓 Submission Checklist
 
-* [ ] `play.h`updated with all docstrings and edge case notes.
+* [x] `play.h`updated with all docstrings and edge case notes.
 * [ ] `play.cpp` include TODOs like `// TODO: Explain?`.
 * [ ] `HandleInputForget()` implemented with correct logic and inline explanations.
 * [ ] `HandleInputRandom()` implemented with correct logic and inline explanations.
